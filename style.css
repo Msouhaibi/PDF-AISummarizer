@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #000;
+
+}
+a{
+    color: inherit;
+}
+header{
+    color: white;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2% 0;
+}
+span.red {
+    color: #fe0000;
+}
+
+nav > a {
+    text-decoration: none;
+    color: white;
+}
+.content{
+    position: absolute;
+    top: 30%;
+    width: 100%;
+}
+.content>input{
+    width: 90%;
+}
