@@ -31,7 +31,6 @@ app.get('/api/summarize', async (req, res) => {
             prompt: `I want you to act like a pdf text summarizer. I will input text from a pdf and your job is to convert it into a useful summary of a few sentences. Do not repeat sentences and make them clear and concise, : "${prompt}"`, // Use prompt from query parameter
         });
 
-        // Send response with Access-Control-Allow-Origin header set to allow all origins
         res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json({
             summary: comp.data.choices[0].text,
@@ -45,10 +44,8 @@ app.get('/api/summarize', async (req, res) => {
     }
 });
 
-// Serve static files for the front-end
 app.use(express.static('public'));
 
-// Start the Express app
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

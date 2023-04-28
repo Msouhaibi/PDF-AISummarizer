@@ -24,7 +24,6 @@ const extractTextFromPdf = async (pdf) => {
     }
     return pageContent;
 };
-// TODO -> FINISH LATER
 const summarizeText = async (prompt) => {
     try {
         const response = await fetch(`http://localhost:3000/api/summarize?prompt="${prompt}"`);
@@ -33,13 +32,12 @@ const summarizeText = async (prompt) => {
         }
         const data = await response.json();
         summarizedData.push(data.summary)
-        console.log(summarizedData)
-        pageContent.length===summarizedData.length ? localStorage.setItem(file.name,summarizedData) : false;
     }
     catch (error) {
         console.error(error);
         throw new Error('Failed to summarize text');
     }
+
 };
 document.getElementById("pdfInput").addEventListener("change", (event) => {
      file = event.target.files[0]; // Get the uploaded file
@@ -60,9 +58,15 @@ document.getElementById("summarize").addEventListener("click",(c)=>{
                         })
                         .then(pageContent => {
                             if (pageContent) {
-                                pageContent.map(page => summarizeText(page.content));
-
+                                summarizedData = [];
+                                const promises = pageContent.map(page => summarizeText(page.content));
+                                return Promise.all(promises);
                             }
+                        })
+                        .then(() => {
+                            pageContent = [];
+                            console.log(summarizedData)
+                            console.log("promise finished")
                         })
                         .catch(error => {
                             console.error(error);
