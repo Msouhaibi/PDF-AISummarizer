@@ -1,6 +1,7 @@
 const PDFJS = window['pdfjs-dist/build/pdf'];
 let pageContent = [];
 let summarizedData = []
+let loader = document.querySelector(".loader-container");
 let file;
 
 const loadPdf = async (pdfUrl) => {
@@ -46,40 +47,38 @@ document.getElementById("summarize").addEventListener("click",(c)=>{
     c.preventDefault();
     var reader = new FileReader();
     if (file) {
-        if(localStorage){
-            if(localStorage.getItem(file.name)===null){
-                reader.onload = function (e) {
-                    var fileData = e.target.result;
-                    loadPdf(fileData)
-                        .then(pdf => {
-                            if (pdf) {
-                                return extractTextFromPdf(pdf);
-                            }
-                        })
-                        .then(pageContent => {
-                            if (pageContent) {
-                                summarizedData = [];
-                                const promises = pageContent.map(page => summarizeText(page.content));
-                                return Promise.all(promises);
-                            }
-                        })
-                        .then(() => {
-                            pageContent = [];
-                            console.log(summarizedData)
-                            console.log("promise finished")
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
-                };
-                reader.readAsArrayBuffer(file);
-            }
-            else{
-                console.log(localStorage.getItem(file.name))
-            }
+        loader.style.display="flex"
+        if(localStorage.getItem(file.name)===null){
+            reader.onload = function (e) {
+                var fileData = e.target.result;
+                loadPdf(fileData)
+                    .then(pdf => {
+                        if (pdf) {
+                            return extractTextFromPdf(pdf);
+                        }
+                    })
+                    .then(pageContent => {
+                        if (pageContent) {
+                            summarizedData = [];
+                            const promises = pageContent.map(page => summarizeText(page.content));
+                            return Promise.all(promises);
+                        }
+                    })
+                    .then(() => {
+                        pageContent = [];
+                        console.log(summarizedData)
+                        loader.style.display = "none"
+                        localStorage.setItem(file.name,summarizedData)
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            };
+            reader.readAsArrayBuffer(file);
         }
         else{
-            // TODO  LATER A fallback IF LOCALSTORAGE IS NOT SUPPORTED
+            console.log("File already stored")
+            console.log(localStorage.getItem(file.name))
         }
     }
     else {

@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f52e4665-2818-4a9d-aaad-2b9279bff3c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openaiAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/openaiAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +110,8 @@
       <workItem from="1682349844318" duration="672000" />
       <workItem from="1682375590659" duration="609000" />
       <workItem from="1682432100051" duration="16000" />
-      <workItem from="1682680319454" duration="8251000" />
+      <workItem from="1682680319454" duration="11050000" />
+      <workItem from="1682706824898" duration="2890000" />
     </task>
     <servers />
   </component>
