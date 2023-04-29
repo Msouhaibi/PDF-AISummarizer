@@ -1,7 +1,9 @@
 const PDFJS = window['pdfjs-dist/build/pdf'];
+window.jsPDF = window.jspdf.jsPDF;
 let pageContent = [];
 let summarizedData = []
 let loader = document.querySelector(".loader-container");
+let pdfContent = document.querySelector('.SummarizedContent');
 let file;
 
 const loadPdf = async (pdfUrl) => {
@@ -43,6 +45,66 @@ const summarizeText = async (prompt) => {
 document.getElementById("pdfInput").addEventListener("change", (event) => {
      file = event.target.files[0]; // Get the uploaded file
 });
+
+function Convert_HTML_To_PDF(elementHTML) {
+    let doc = new jsPDF();
+    doc.html(elementHTML, {
+        callback: function(doc) {
+            doc.save('SummarizedAI.pdf');
+        },
+        margin: [10, 10, 10, 10],
+        autoPaging: 'text',
+        x: 0,
+        y: 0,
+        width: 190,
+        windowWidth: 675
+    });
+}
+
+function pdfLayout(data){
+
+    const contentToPrint = document.createElement('div');
+    contentToPrint.id = 'contentToPrint';
+
+    const header = document.createElement('center');
+    const headerTitle = document.createElement('h1');
+    headerTitle.innerHTML = '<span>PDF</span> Summarizer';
+    header.appendChild(headerTitle);
+    contentToPrint.appendChild(header);
+
+    const firstParagraph = document.createElement('p');
+    firstParagraph.textContent = 'The PDF Summarizer is a web-based application that allows users to upload their PDF documents and receive a summarized version, Provides a convenient way to summarize lengthy PDF documents using OpenAI';
+    contentToPrint.appendChild(firstParagraph);
+
+    const secondParagraph = document.createElement('p');
+    secondParagraph.textContent = '- Soufiyane AitMoulay';
+    contentToPrint.appendChild(secondParagraph);
+
+    const hr = document.createElement('hr');
+    contentToPrint.appendChild(hr);
+
+    const summarizedContent = document.createElement('div');
+    summarizedContent.classList.add('SummarizedContent');
+    contentToPrint.appendChild(summarizedContent);
+
+    data.forEach((e,i)=>{
+        const pageContent = document.createElement('div');
+        pageContent.classList.add('Pagecontent');
+        summarizedContent.appendChild(pageContent);
+
+        const pageTitle = document.createElement('h1');
+        pageTitle.textContent = `Page ${i+1}`;
+        pageContent.appendChild(pageTitle);
+
+        const pageContentText = document.createElement('p');
+        pageContentText.textContent = `${e}`
+        pageContent.appendChild(pageContentText);
+    })
+
+    return contentToPrint
+
+}
+
 document.getElementById("summarize").addEventListener("click",(c)=>{
     c.preventDefault();
     var reader = new FileReader();
@@ -66,9 +128,10 @@ document.getElementById("summarize").addEventListener("click",(c)=>{
                     })
                     .then(() => {
                         pageContent = [];
-                        console.log(summarizedData)
                         loader.style.display = "none"
                         localStorage.setItem(file.name,summarizedData)
+                        Convert_HTML_To_PDF(pdfLayout(summarizedData));
+
                     })
                     .catch(error => {
                         console.error(error);

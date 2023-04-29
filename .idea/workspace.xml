@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
@@ -111,7 +113,12 @@
       <workItem from="1682375590659" duration="609000" />
       <workItem from="1682432100051" duration="16000" />
       <workItem from="1682680319454" duration="11050000" />
-      <workItem from="1682706824898" duration="2890000" />
+      <workItem from="1682706824898" duration="7666000" />
+      <workItem from="1682758636233" duration="2818000" />
+      <workItem from="1682771354904" duration="65000" />
+      <workItem from="1682773078206" duration="2115000" />
+      <workItem from="1682779173298" duration="816000" />
+      <workItem from="1682788699608" duration="405000" />
     </task>
     <servers />
   </component>

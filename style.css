@@ -45,7 +45,6 @@ nav > a {
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgba(0,0,0,.5);
@@ -81,4 +80,14 @@ span.loader::after {
     100% {
         transform: rotate(360deg);
     }
+}
+
+#contentToPrint h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#contentToPrint h1 > span{
+    color: #fe0000;
+}
+#contentToPrint p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
