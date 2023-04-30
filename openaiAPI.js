@@ -2,11 +2,10 @@ const express = require('express');
 const app = express();
 const { Configuration, OpenAIApi } = require('openai');
 require('dotenv').config();
-const cors = require('cors'); // Import the cors middleware
+const cors = require('cors');
 
-app.use(cors()); // Use cors middleware to allow all CORS requests
+app.use(cors());
 
-// Define API route
 app.get('/api/summarize', async (req, res) => {
     try {
         const { prompt } = req.query; // Extract prompt from query parameter
@@ -18,7 +17,6 @@ app.get('/api/summarize', async (req, res) => {
             });
         }
 
-        // Call OpenAI API
         const configuration = new Configuration({
             apiKey: process.env.OPEN_API_KEY,
         });
