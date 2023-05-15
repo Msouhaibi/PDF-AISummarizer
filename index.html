@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Summarizer</title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,16 +23,20 @@
 
         <div class="content">
             <h1>Summarize your <span class="red">PDF</span> now with AI</h1>
-            <p class="opacity-50">Powered by OpenAI, <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">how to get a better experience ?</a></p>
+            <p class="opacity-50">Powered by OpenAI, <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                how to get a better experience ?</a>
+            </p>
             <input class="form-control mt-3" accept="application/pdf" type="file" id="pdfInput">
             <center><button id="summarize" class="btn btn-sm btn-success mt-5 px-5">Summarize</button></center>
         </div>
+
     </header>
 
     <div class="loader-container">
-        <span class="loader"></span>
-    </div>
+        <span class="loader">
 
+        </span>
+    </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -60,6 +67,7 @@
     <script src="./node_modules/pdfjs-dist/build/pdf.worker.js"></script>
     <script src="./node_modules/html2canvas/dist/html2canvas.js"></script>
     <script src="./node_modules/jspdf/dist/jspdf.umd.js"></script>
+    <script src="./node_modules/toastr/build/toastr.min.js"></script>
     <script src="script.js"></script>
 
 </body>

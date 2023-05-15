@@ -12,6 +12,7 @@
     "openai": "^3.2.1",
     "ora": "^6.3.0",
     "pdfjs-dist": "^3.5.141",
-    "requirejs": "^2.3.6"
+    "requirejs": "^2.3.6",
+    "toastr": "^2.1.4"
   }
 }

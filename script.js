@@ -6,11 +6,32 @@ let loader = document.querySelector(".loader-container");
 let pdfContent = document.querySelector('.SummarizedContent');
 let file;
 
+function errorToast(text){
+    toastr["error"](text, "Error")
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "progressBar": true,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+}
+
 const loadPdf = async (pdfUrl) => {
     try {
         return await PDFJS.getDocument(pdfUrl).promise;
     } catch (error) {
-        console.error('Error loading PDF:', error);
+        errorToast("Failed to load PDF");
         throw new Error('Failed to load PDF');
     }
 };
@@ -31,13 +52,14 @@ const summarizeText = async (prompt) => {
     try {
         const response = await fetch(`http://localhost:3000/api/summarize?prompt="${prompt}"`);
         if (!response.ok) {
+            errorToast("Failed to get summarization response")
             throw new Error('Failed to get summarization response');
         }
         const data = await response.json();
         summarizedData.push(data.summary)
     }
     catch (error) {
-        console.error(error);
+        errorToast("Failed to summarize text")
         throw new Error('Failed to summarize text');
     }
 
@@ -145,6 +167,7 @@ document.getElementById("summarize").addEventListener("click",(c)=>{
         }
     }
     else {
-        alert('No file selected.');
+        errorToast("No file has been selected");
     }
 })
+
